@@ -10,6 +10,8 @@
 
 @implementation SongCell
 
+static NSString *_identifier = @"SongCell";
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -19,6 +21,17 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)configureCellWith: (NSString*) albumName
+                songName: (NSString*) songName
+                albumUrl: (NSString*) albumUrl {
+    self.albumLabel.text = albumName;
+    self.songNameLabel.text = songName;
+}
+
++(NSString*)identifier {
+    return _identifier;
 }
 
 @end

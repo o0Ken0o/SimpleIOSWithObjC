@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongsListViewController : UIViewController
+@interface SongsListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *songsTableView;
 
