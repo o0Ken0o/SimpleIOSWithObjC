@@ -15,6 +15,7 @@
 		39757C561FFA17670099771F /* SongsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39757C551FFA17670099771F /* SongsListViewController.m */; };
 		39757C591FFA1B480099771F /* SongDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39757C581FFA1B480099771F /* SongDetailsViewController.m */; };
 		39757C5C1FFA1B630099771F /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39757C5B1FFA1B630099771F /* SongCell.m */; };
+		39757C5F1FFA2DB60099771F /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 39757C5E1FFA2DB60099771F /* Song.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		39757C581FFA1B480099771F /* SongDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongDetailsViewController.m; sourceTree = "<group>"; };
 		39757C5A1FFA1B630099771F /* SongCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongCell.h; sourceTree = "<group>"; };
 		39757C5B1FFA1B630099771F /* SongCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongCell.m; sourceTree = "<group>"; };
+		39757C5D1FFA2DB60099771F /* Song.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		39757C5E1FFA2DB60099771F /* Song.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 				39757C581FFA1B480099771F /* SongDetailsViewController.m */,
 				39757C5A1FFA1B630099771F /* SongCell.h */,
 				39757C5B1FFA1B630099771F /* SongCell.m */,
+				39757C5D1FFA2DB60099771F /* Song.h */,
+				39757C5E1FFA2DB60099771F /* Song.m */,
 			);
 			path = ItunesRss;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39757C5F1FFA2DB60099771F /* Song.m in Sources */,
 				39757C561FFA17670099771F /* SongsListViewController.m in Sources */,
 				39757C4E1FFA15ED0099771F /* main.m in Sources */,
 				39757C591FFA1B480099771F /* SongDetailsViewController.m in Sources */,
