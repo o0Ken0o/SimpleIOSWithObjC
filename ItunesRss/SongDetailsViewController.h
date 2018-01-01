@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Song.h"
 
 @interface SongDetailsViewController : UIViewController
+
+-(void)setSong: (Song*) song;
 
 @end

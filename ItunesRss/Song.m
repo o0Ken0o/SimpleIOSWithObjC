@@ -10,13 +10,19 @@
 
 @implementation Song
 
--(instancetype) init:(NSString *)albumName songName:(NSString *)songName albumImgUrl:(NSString *)albumImgUrl {
+-(instancetype) init: (NSString*) albumName
+            songName: (NSString*)  songName
+         albumImgUrl: (NSString*) albumImgUrl
+           artistName: (NSString*) artistName
+           intellectualRight: (NSString*) intellectualRight {
     self = [super init];
     
     if (self) {
         _albumName = albumName;
         _songName = songName;
         _albumImgUrl = albumImgUrl;
+        _artistName = artistName;
+        _intellectualRight = intellectualRight;
     }
     
     return self;

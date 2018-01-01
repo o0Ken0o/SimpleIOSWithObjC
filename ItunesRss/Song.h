@@ -13,9 +13,13 @@
 @property (strong, atomic) NSString *albumName;
 @property (strong, atomic) NSString *songName;
 @property (strong, atomic) NSString *albumImgUrl;
+@property (strong, atomic) NSString *artistName;
+@property (strong, atomic) NSString *intellectualRight;
 
--(instancetype) init: (NSString *) albumName
-            songName: (NSString *)  songName
-         albumImgUrl: (NSString *) albumImgUrl;
+-(instancetype) init: (NSString*) albumName
+            songName: (NSString*)  songName
+         albumImgUrl: (NSString*) albumImgUrl
+           artistName: (NSString*) artistName
+           intellectualRight: (NSString*) intellectualRight;
 
 @end

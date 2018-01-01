@@ -30,7 +30,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b7Y-ET-y6m">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SongCell" id="m17-fk-ESg" customClass="SongCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
@@ -80,7 +80,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="b7Y-ET-y6m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="F7s-rD-YD9"/>
                             <constraint firstItem="b7Y-ET-y6m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="FCc-o8-05Q"/>
@@ -106,13 +106,60 @@
                     <view key="view" contentMode="scaleToFill" id="kL3-Tw-DWf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bt-ke-jVY">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Title" id="yBz-uq-0x3">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt;Back" id="SS1-rU-Ewz">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="backTapped:" destination="AKQ-q6-Dh8" id="j62-lf-Div"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3LK-qq-R2Q">
+                                <rect key="frame" x="30" y="114" width="315" height="315"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3LK-qq-R2Q" secondAttribute="height" multiplier="1:1" id="9Jk-GF-HmD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mw0-9m-h7V">
+                                <rect key="frame" x="30" y="477" width="315" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0bt-ke-jVY" firstAttribute="trailing" secondItem="ED2-zx-Yra" secondAttribute="trailing" id="94J-aT-Jhx"/>
+                            <constraint firstItem="mw0-9m-h7V" firstAttribute="trailing" secondItem="3LK-qq-R2Q" secondAttribute="trailing" id="Z11-qi-tV6"/>
+                            <constraint firstItem="ED2-zx-Yra" firstAttribute="trailing" secondItem="3LK-qq-R2Q" secondAttribute="trailing" constant="30" id="ZHp-cH-F8W"/>
+                            <constraint firstItem="3LK-qq-R2Q" firstAttribute="top" secondItem="0bt-ke-jVY" secondAttribute="bottom" constant="50" id="b1s-ZF-Fjx"/>
+                            <constraint firstItem="3LK-qq-R2Q" firstAttribute="leading" secondItem="ED2-zx-Yra" secondAttribute="leading" constant="30" id="gf1-QX-KBg"/>
+                            <constraint firstItem="0bt-ke-jVY" firstAttribute="top" secondItem="ED2-zx-Yra" secondAttribute="top" id="iWc-cg-QAm"/>
+                            <constraint firstItem="0bt-ke-jVY" firstAttribute="leading" secondItem="ED2-zx-Yra" secondAttribute="leading" id="kIP-ez-Ar4"/>
+                            <constraint firstItem="mw0-9m-h7V" firstAttribute="top" secondItem="3LK-qq-R2Q" secondAttribute="bottom" constant="48" id="ngT-v4-9T7"/>
+                            <constraint firstItem="mw0-9m-h7V" firstAttribute="leading" secondItem="3LK-qq-R2Q" secondAttribute="leading" id="umt-rj-TdX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ED2-zx-Yra"/>
                     </view>
+                    <connections>
+                        <outlet property="albumImageView" destination="3LK-qq-R2Q" id="Qvd-VA-FpP"/>
+                        <outlet property="navigationItem" destination="yBz-uq-0x3" id="qX4-6p-A1T"/>
+                        <outlet property="summaryLabel" destination="mw0-9m-h7V" id="9rC-ID-Ycm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Dt-9f-Rch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="133"/>
+            <point key="canvasLocation" x="1288.8" y="132.68365817091455"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Om-MT-w2G">
@@ -122,6 +169,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vhe-GV-67A">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

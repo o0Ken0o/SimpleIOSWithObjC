@@ -7,12 +7,14 @@
 //
 
 #import "SongsListViewController.h"
+#import "SongDetailsViewController.h"
 #import "SongCell.h"
 #import "Song.h"
 
 @interface SongsListViewController () {
     NSString* _Nonnull  urlStr;
     NSMutableArray<Song*>* _Nonnull songsList;
+    Song* _Nullable selectedSong;
 }
 
 @end
@@ -49,7 +51,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 __strong SongsListViewController *strongSelf = weakSelf;
                 for (NSDictionary *songDict in songsList) {
-                    Song *song = [[Song alloc] init: [songDict valueForKey: @"collectionName"] songName:[songDict valueForKey: @"name"] albumImgUrl:[songDict valueForKey: @"artworkUrl100"]];
+
+                    Song *song = [[Song alloc] init:[songDict valueForKey: @"collectionName"]
+                                    songName:[songDict valueForKey: @"name"]
+                                    albumImgUrl:[songDict valueForKey: @"artworkUrl100"]
+                                    artistName:[songDict valueForKey: @"artistName"]
+                                    intellectualRight:[songDict valueForKey: @"copyright"]
+                                ];
                     [strongSelf->songsList addObject: song];
                 }
                 [strongSelf.songsTableView reloadData];
@@ -59,6 +67,13 @@
             NSLog(@"%@", e);
         }
     }] resume];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString: @"SongDetailsViewController"]) {
+        SongDetailsViewController *destination = segue.destinationViewController;
+        [destination setSong: selectedSong];
+    }
 }
 
 # pragma mark - UITableViewDataSource
@@ -83,5 +98,10 @@
 }
 
 # pragma mark - UITableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath: indexPath animated:false];
+    selectedSong = [songsList objectAtIndex: indexPath.row];
+    [self performSegueWithIdentifier:@"SongDetailsViewController" sender: self];
+}
 
 @end
