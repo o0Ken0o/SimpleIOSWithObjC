@@ -28,10 +28,28 @@ static NSString *_identifier = @"SongCell";
                 albumUrl: (NSString*) albumUrl {
     self.albumLabel.text = albumName;
     self.songNameLabel.text = songName;
+    [self.songImageView setHidden: true];
+    [self fetchThumbnail: albumUrl];
 }
 
 +(NSString*)identifier {
     return _identifier;
+}
+
+-(void)fetchThumbnail: (NSString*) urlStr {
+    NSURL *url = [[NSURL alloc] initWithString: urlStr];
+    dispatch_queue_t q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(q, ^{
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL: url];
+        if (imageData) {
+            __weak SongCell *weakSelf = self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __strong SongCell *strongSelf = weakSelf;
+                strongSelf.songImageView.image = [UIImage imageWithData: imageData];
+                [strongSelf.songImageView setHidden: false];
+            });
+        }
+    });
 }
 
 @end
