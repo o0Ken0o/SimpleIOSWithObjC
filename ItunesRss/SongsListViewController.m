@@ -39,7 +39,14 @@
 - (void) fetchSongsList {
     NSURL *url = [[NSURL alloc] initWithString: urlStr];
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url];
+    
+    // explicitly set http method to GET
+    [request setHTTPMethod:@"GET"];
+    
+    // explicitly set timeout interval to 5 seconds
+    [request setTimeoutInterval:5];
+    
     [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSError *e = nil;
         NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&e];
