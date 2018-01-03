@@ -10,6 +10,7 @@
 #import "SongDetailsViewController.h"
 #import "SongCell.h"
 #import "Song.h"
+#import "AFNetworking.h"
 
 @interface SongsListViewController () {
     NSString* _Nonnull  urlStr;
@@ -28,7 +29,8 @@
     [self.songsTableView setDataSource:self];
     
     [self initVariables];
-    [self fetchSongsList];
+//    [self fetchSongsList];
+    [self fetchSongsListWithLibraries];
 }
 
 - (void) initVariables {
@@ -74,6 +76,71 @@
             NSLog(@"%@", e);
         }
     }] resume];
+}
+
+-(void)fetchSongsListWithLibraries {
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:config];
+    
+    NSURL *url = [[NSURL alloc] initWithString: urlStr];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            long statusCode = [httpResponse statusCode];
+            if (statusCode / 100 == 2) {
+                // statusCode is 2xx
+                if ([responseObject isKindOfClass: [NSDictionary class]]) {
+                    NSDictionary *jsonDict = responseObject;
+                    NSArray *songsList = [[jsonDict valueForKey: @"feed"] valueForKey: @"results"];
+                    
+                    __weak SongsListViewController *weakSelf = self;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        __strong SongsListViewController *strongSelf = weakSelf;
+                        for (NSDictionary *songDict in songsList) {
+                            
+                            Song *song = [[Song alloc] init:[songDict valueForKey: @"collectionName"]
+                                                   songName:[songDict valueForKey: @"name"]
+                                                albumImgUrl:[songDict valueForKey: @"artworkUrl100"]
+                                                 artistName:[songDict valueForKey: @"artistName"]
+                                          intellectualRight:[songDict valueForKey: @"copyright"]
+                                          ];
+                            [strongSelf->songsList addObject: song];
+                        }
+                        [strongSelf.songsTableView reloadData];
+                    });
+                } else {
+                    
+                }
+            } else {
+                // handle errors like 401
+            }
+        }
+    }];
+    
+    [dataTask resume];
+}
+
+-(void)testingFetchData {
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:config];
+    
+    NSString *URLString = @"http://example.com";
+    NSDictionary *parameters = @{@"foo": @"bar", @"baz": @[@1, @2, @3]};
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:URLString parameters:parameters error:nil];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            NSLog(@"%@ %@", response, responseObject);
+        }
+    }];
+    
+    [dataTask resume];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
