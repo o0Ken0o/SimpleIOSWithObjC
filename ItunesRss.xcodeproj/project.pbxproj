@@ -16,9 +16,11 @@
 		39757C591FFA1B480099771F /* SongDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39757C581FFA1B480099771F /* SongDetailsViewController.m */; };
 		39757C5C1FFA1B630099771F /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39757C5B1FFA1B630099771F /* SongCell.m */; };
 		39757C5F1FFA2DB60099771F /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 39757C5E1FFA2DB60099771F /* Song.m */; };
+		646077C3D50E93FD9C61B2A1 /* libPods-ItunesRss.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D1D9575EC9571B46CF9334E /* libPods-ItunesRss.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		148D4F08336D108A9FBC8ACC /* Pods-ItunesRss.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItunesRss.release.xcconfig"; path = "Pods/Target Support Files/Pods-ItunesRss/Pods-ItunesRss.release.xcconfig"; sourceTree = "<group>"; };
 		39757C3B1FFA15ED0099771F /* ItunesRss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItunesRss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39757C3E1FFA15ED0099771F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39757C3F1FFA15ED0099771F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -35,6 +37,8 @@
 		39757C5B1FFA1B630099771F /* SongCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongCell.m; sourceTree = "<group>"; };
 		39757C5D1FFA2DB60099771F /* Song.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		39757C5E1FFA2DB60099771F /* Song.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		8D1D9575EC9571B46CF9334E /* libPods-ItunesRss.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ItunesRss.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24B6241ED2C77EBE5756145 /* Pods-ItunesRss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItunesRss.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ItunesRss/Pods-ItunesRss.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,17 +46,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				646077C3D50E93FD9C61B2A1 /* libPods-ItunesRss.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F9DCF0D746657DDDFA9CD12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8D1D9575EC9571B46CF9334E /* libPods-ItunesRss.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		39757C321FFA15ED0099771F = {
 			isa = PBXGroup;
 			children = (
 				39757C3D1FFA15ED0099771F /* ItunesRss */,
 				39757C3C1FFA15ED0099771F /* Products */,
+				F7BC02415CDDECF742E429DA /* Pods */,
+				1F9DCF0D746657DDDFA9CD12 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +101,15 @@
 			path = ItunesRss;
 			sourceTree = "<group>";
 		};
+		F7BC02415CDDECF742E429DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F24B6241ED2C77EBE5756145 /* Pods-ItunesRss.debug.xcconfig */,
+				148D4F08336D108A9FBC8ACC /* Pods-ItunesRss.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,9 +117,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39757C511FFA15ED0099771F /* Build configuration list for PBXNativeTarget "ItunesRss" */;
 			buildPhases = (
+				275099DFD346200E114827EB /* [CP] Check Pods Manifest.lock */,
 				39757C371FFA15ED0099771F /* Sources */,
 				39757C381FFA15ED0099771F /* Frameworks */,
 				39757C391FFA15ED0099771F /* Resources */,
+				0F15D19862E7BF8E0ED735B3 /* [CP] Embed Pods Frameworks */,
+				676F9B2D1CC818479A5D1AE2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -151,6 +178,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F15D19862E7BF8E0ED735B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ItunesRss/Pods-ItunesRss-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		275099DFD346200E114827EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ItunesRss-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		676F9B2D1CC818479A5D1AE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ItunesRss/Pods-ItunesRss-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		39757C371FFA15ED0099771F /* Sources */ = {
@@ -294,6 +372,7 @@
 		};
 		39757C521FFA15ED0099771F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F24B6241ED2C77EBE5756145 /* Pods-ItunesRss.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -308,6 +387,7 @@
 		};
 		39757C531FFA15ED0099771F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 148D4F08336D108A9FBC8ACC /* Pods-ItunesRss.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
