@@ -26,7 +26,6 @@
     [self.navigationItem setTitle: currentSong.albumName];
     
     [self.albumImageView setHidden: true];
-//    [self fetchThumbnail: currentSong.albumImgUrl];
     [self fetchThumbnailWithLibraries:currentSong.albumImgUrl];
     [self setupSummary];
 }
@@ -73,6 +72,24 @@
     });
 }
 
+-(NSURL*) renameFile:(NSURL*) filePath {
+    NSURL *parentDir = [filePath URLByDeletingLastPathComponent];
+    NSString *fileNameWithExtension = [filePath lastPathComponent];
+    NSString *extension = fileNameWithExtension.pathExtension;
+    NSString *newFileNewWithoutExt = [[currentSong.albumName stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    NSString *newFileNameWithExtension = [newFileNewWithoutExt stringByAppendingPathExtension:extension];
+    NSURL *newFileUrl = [parentDir URLByAppendingPathComponent:newFileNameWithExtension];
+    
+    NSError *error = nil;
+    [[NSFileManager defaultManager] moveItemAtURL:filePath toURL:newFileUrl error:&error];
+    
+    if (error) {
+        return nil;
+    }
+    
+    return newFileUrl;
+}
+
 -(void)fetchThumbnailWithLibraries:(NSString*)urlStr {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -85,9 +102,10 @@
         return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         NSLog(@"File downloaded to: %@", filePath);
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL: filePath];
+        __weak SongDetailsViewController *weakSelf = self;
+        NSURL* renameFileUrl = [weakSelf renameFile: filePath];
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL: renameFileUrl];
         if (imageData) {
-            __weak SongDetailsViewController *weakSelf = self;
             dispatch_async(dispatch_get_main_queue(), ^{
                 __strong SongDetailsViewController *strongSelf = weakSelf;
                 strongSelf.albumImageView.image = [UIImage imageWithData: imageData];

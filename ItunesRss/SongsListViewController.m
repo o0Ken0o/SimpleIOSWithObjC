@@ -80,6 +80,7 @@
 # pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath: indexPath animated:false];
+//    NSLog(@"%@ %ld", indexPath, (long)indexPath.row);
     selectedSong = [songsList objectAtIndex: indexPath.row];
     [self performSegueWithIdentifier:@"SongDetailsViewController" sender: self];
 }
