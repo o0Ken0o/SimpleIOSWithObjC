@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		395B71091FFCAFC600962305 /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395B71081FFCAFC600962305 /* ApiManager.m */; };
 		39757C401FFA15ED0099771F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39757C3F1FFA15ED0099771F /* AppDelegate.m */; };
 		39757C461FFA15ED0099771F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39757C441FFA15ED0099771F /* Main.storyboard */; };
 		39757C481FFA15ED0099771F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39757C471FFA15ED0099771F /* Assets.xcassets */; };
@@ -21,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		148D4F08336D108A9FBC8ACC /* Pods-ItunesRss.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItunesRss.release.xcconfig"; path = "Pods/Target Support Files/Pods-ItunesRss/Pods-ItunesRss.release.xcconfig"; sourceTree = "<group>"; };
+		395B71071FFCAFC600962305 /* ApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiManager.h; sourceTree = "<group>"; };
+		395B71081FFCAFC600962305 /* ApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApiManager.m; sourceTree = "<group>"; };
 		39757C3B1FFA15ED0099771F /* ItunesRss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItunesRss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39757C3E1FFA15ED0099771F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39757C3F1FFA15ED0099771F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				39757C5B1FFA1B630099771F /* SongCell.m */,
 				39757C5D1FFA2DB60099771F /* Song.h */,
 				39757C5E1FFA2DB60099771F /* Song.m */,
+				395B71071FFCAFC600962305 /* ApiManager.h */,
+				395B71081FFCAFC600962305 /* ApiManager.m */,
 			);
 			path = ItunesRss;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				395B71091FFCAFC600962305 /* ApiManager.m in Sources */,
 				39757C5F1FFA2DB60099771F /* Song.m in Sources */,
 				39757C561FFA17670099771F /* SongsListViewController.m in Sources */,
 				39757C4E1FFA15ED0099771F /* main.m in Sources */,
