@@ -7,6 +7,7 @@
 //
 
 #import "SongDetailsViewController.h"
+#import "AFNetworking.h"
 
 @interface SongDetailsViewController () {
     Song* currentSong;
@@ -25,7 +26,8 @@
     [self.navigationItem setTitle: currentSong.albumName];
     
     [self.albumImageView setHidden: true];
-    [self fetchThumbnail: currentSong.albumImgUrl];
+//    [self fetchThumbnail: currentSong.albumImgUrl];
+    [self fetchThumbnailWithLibraries:currentSong.albumImgUrl];
     [self setupSummary];
 }
 
@@ -69,6 +71,31 @@
             });
         }
     });
+}
+
+-(void)fetchThumbnailWithLibraries:(NSString*)urlStr {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [[NSURL alloc] initWithString: urlStr];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        NSLog(@"File downloaded to: %@", filePath);
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL: filePath];
+        if (imageData) {
+            __weak SongDetailsViewController *weakSelf = self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __strong SongDetailsViewController *strongSelf = weakSelf;
+                strongSelf.albumImageView.image = [UIImage imageWithData: imageData];
+                [strongSelf.albumImageView setHidden: false];
+            });
+        }
+    }];
+    [downloadTask resume];
 }
 
 - (IBAction)backTapped:(id)sender {
